@@ -3,7 +3,7 @@ entries:
   gha-runner-scale-set:
   - apiVersion: v2
     appVersion: 0.6.1
-    created: "2025-03-30T15:38:14.104496+02:00"
+    created: "2025-03-30T16:20:09.360528+02:00"
     description: A Helm chart for deploying an AutoScalingRunnerSet
     digest: fffd67b04da62d54b38a73d8ce863ce8840cfd32148250bf44495c4654317022
     home: https://github.com/actions/dev-arc
@@ -17,4 +17,21 @@ entries:
     urls:
     - charts/gha-runner-scale-set-0.6.1.tgz
     version: 0.6.1
-generated: "2025-03-30T15:38:14.103801+02:00"
+  gha-runner-scale-set-controller:
+  - apiVersion: v2
+    appVersion: 0.6.1
+    created: "2025-03-30T16:20:09.365252+02:00"
+    description: A Helm chart for install actions-runner-controller CRD
+    digest: d35b5adfeef7e1cc8e9ee44afea7050a1f4aedc5f5c98716027b344cb6810200
+    home: https://github.com/actions/actions-runner-controller
+    maintainers:
+    - name: actions
+      url: https://github.com/actions
+    name: gha-runner-scale-set-controller
+    sources:
+    - https://github.com/actions/actions-runner-controller
+    type: application
+    urls:
+    - charts/gha-runner-scale-set-controller-0.6.1.tgz
+    version: 0.6.1
+generated: "2025-03-30T16:20:09.359786+02:00"

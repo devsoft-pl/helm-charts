@@ -6,7 +6,6 @@ set -euo pipefail
 REPO_URL="$1"                # Git repository URL (e.g. https://github.com/org/repo.git)
 TAG="$2"                     # Git tag to check out (e.g. v1.2.3)
 SUBDIR="$3"                  # Path to Helm chart in repo (e.g. charts/mychart)
-OUTPUT_DIR="$4"              # Output directory for built chart and index.yaml (e.g. ./gh-pages)
 CHART_NAME_OVERRIDE="${5:-}"  # Optional: override chart name from Chart.yaml
 
 # Prepare temporary working directory
@@ -29,7 +28,7 @@ CHART_NAME=$(grep '^name:' "$CHART_SRC_PATH/Chart.yaml" | awk '{print $2}')
 CHART_VERSION=$(grep '^version:' "$CHART_SRC_PATH/Chart.yaml" | awk '{print $2}')
 [ -n "$CHART_NAME_OVERRIDE" ] && CHART_NAME="$CHART_NAME_OVERRIDE"
 
-CHART_DEST_DIR="$OUTPUT_DIR/charts/$CHART_NAME"
+CHART_DEST_DIR="charts"
 mkdir -p "$CHART_DEST_DIR"
 
 # Clean old versions of this chart
@@ -40,7 +39,7 @@ rm -f "$CHART_DEST_DIR/$CHART_NAME-"*.tgz
 echo "[*] Packaging chart: $CHART_NAME-$CHART_VERSION"
 helm package "$CHART_SRC_PATH" --destination "$CHART_DEST_DIR"
 
-# Generate or update index.yaml in OUTPUT_DIR
+# Generate or update index.yaml
 echo "[*] Generating Helm index.yaml"
 helm repo index .  --merge index.yaml
 
