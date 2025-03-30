@@ -42,6 +42,6 @@ helm package "$CHART_SRC_PATH" --destination "$CHART_DEST_DIR"
 
 # Generate or update index.yaml in OUTPUT_DIR
 echo "[*] Generating Helm index.yaml"
-helm repo index "$OUTPUT_DIR" --merge "$OUTPUT_DIR/index.yaml" || helm repo index "$OUTPUT_DIR"
+helm repo index .  --merge index.yaml
 
 echo "[✓] Chart and index.yaml created successfully"
